@@ -1,0 +1,58 @@
+# INPUT FOR SIMULATION
+
+20000  # number of simulated DETECTED events
+75000  # beam energy (keV)
+12  # Z beam
+24  # A beam
+2  # Z target
+3  # A target
+2  # Z ejectile
+4  # A ejectile
+2908.  # excitation energy of initial state in 23Mg (keV)
+0.0    # excitation energy of final state in 23Mg (keV)
+15.0   # lifetime of initial state in 23Mg (fs)
+22.55e-6  # target thickness (m)
+ON  # 3He implantation distribution (ON/OFF); if OFF, the 3He ions are assumed to be implanted at zero depth
+6.6e17  # 3He implantation dose (ions/cm2)
+0.75  # volume swell proportionality constant, A=dV/V
+1.0  # implantation depth multiplicative factor
+0.25e-6  # thickness of carbon coating (m)
+0.0  # gaussian width (m); if zero, the carbon coating is assumed to have uniform thickness = mean thickness
+0.0010  # radius of beam spot (m); assumed to be circular
+0.0  # displacement of beam spot (m)
+0.2  # energy resolution (FWHM) of ISAC-II beam (%)
+0.01424  # distance from Au foil to (downstream side of) collimator (m)
+0.07826   # distance from Au foil to surface of Ge detector
+0.00404  # diameter of collimator (m)
+90.0  # maximum emission angle of gamma in decay frame (deg)
+60.0  # maximum emission angle of alpha in decay frame (deg)
+GEANT  # source of stopping-power data for ions with Z>=3 (PASS/GEANT)
+OFF  # Alpha angular distribution; isotropic if OFF
+OFF  # Gamma angular correlation; isotropic if OFF 
+1000000  # size of monte carlo samples
+ON  # energy straggling (ON/OFF)
+ON  # angular straggling (ON/OFF)
+1.0  # half scattering multiplicative factor
+OFF  # zero-degree gamma detection; if ON, only gammas between 0 and 1 degree are detected) (ON/OFF)
+OFF  # zero-degree alpha detection; if ON, only alphas between 0 and 1 degree are detected) (ON/OFF)
+ON  # Si-detector exp. resolution (ON/OFF)
+1.0  # Angle strech factor for gamma detection efficiency
+../SimOutput/output070.dat  # name of output file
+../SimOutput/output070.root  # name of ROOT output file
+
+
+# INPUT FOR ANALYSIS:
+RootFiles/i070.root  # name of root file produced by analysis program
+2.0  # bin width of simulated gamma spectrum (must be divisor of 10000)
+100.  # bin width of simulated particle spectrum (must be divisor of 40000)
+3060.0  # lower limit of peak region (keV)
+3092.0  # upper limit of peak region (keV)
+8.0  # exp background (events per bin)
+h_gamma_ag_lowe_3  # name of exp gamma histogram
+h_alpha_gg_lowe_3  # name of exp alpha histogram
+2000.  # width of alpha gate (keV)
+
+
+# EXTRA INFO:
+# The experimental resolution of the Si and Ge detectors can be modified in particle::detection()
+# The Ge detection efficiency is specified in detectionEfficiency.cpp
